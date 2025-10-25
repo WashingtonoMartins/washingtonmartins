@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washington Martins - Especialista em Tráfego Pago & IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #1A202C;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-cta {
+            background: #FF6B35;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+            padding: 100px 5% 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid #FF6B35;
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #FF6B35;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge::before {
+            content: '🚀';
+            font-size: 18px;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-text h1 .highlight {
+            background: linear-gradient(135deg, #FF6B35, #FFC947);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            background: #FF6B35;
+            color: white;
+            padding: 20px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            display: inline-block;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: rgba(255,255,255,0.98);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+
+        .profile-card:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 24px;
+            border: 4px solid #f0f0f0;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1A202C;
+            margin-bottom: 8px;
+        }
+
+        .profile-role {
+            color: #64748B;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #FF6B35;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 5%;
+            background: #F7F9FC;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: #FF6B35;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            color: #1A202C;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 20px;
+            color: #4A5568;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .highlight-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .highlight-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A202C;
+            margin-bottom: 8px;
+        }
+
+        .highlight-value {
+            font-size: 16px;
+            color: #64748B;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .cases-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: #F7F9FC;
+            border-radius: 24px;
+            padding: 60px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #FF6B35, #FFC947);
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: white;
+            color: #FF6B35;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-title {
+            font-size: 32px;
+            color: #1A202C;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .case-subtitle {
+            font-size: 18px;
+            color: #64748B;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .case-section {
+            margin-bottom: 32px;
+        }
+
+        .case-section h3 {
+            font-size: 20px;
+            color: #1A202C;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .case-section p, .case-section ul {
+            font-size: 17px;
+            color: #4A5568;
+            line-height: 1.8;
+        }
+
+        .case-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .case-section ul li {
+            padding-left: 32px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .case-section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00D68F;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .case-results {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .result-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #00D68F;
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 600;
+        }
+
+        .case-quote {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-top: 32px;
+            border-left: 4px solid #FF6B35;
+            font-size: 18px;
+            color: #1A202C;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+            padding: 120px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid #FF6B35;
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: #FF6B35;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 32px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .urgency-badge::before {
+            content: '🔥';
+            font-size: 24px;
+        }
+
+        .final-cta h2 {
+            color: white;
+            font-size: 52px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .cta-options {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 48px;
+            margin: 48px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .option-title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .option-card {
+            background: rgba(255,255,255,0.08);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .option-card:hover {
+            border-color: #FF6B35;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .option-number {
+            font-size: 48px;
+            color: #FF6B35;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .option-card h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .option-card p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .option-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 16px;
+        }
+
+        .option-card ul li {
+            color: rgba(255,255,255,0.85);
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .option-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00D68F;
+            font-weight: 700;
+        }
+
+        .special-offer {
+            background: linear-gradient(135deg, #FF6B35, #FFC947);
+            padding: 32px;
+            border-radius: 16px;
+            margin: 48px 0;
+            text-align: center;
+        }
+
+        .special-offer h3 {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .special-offer p {
+            color: rgba(255,255,255,0.95);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .cta-mega {
+            background: #FF6B35;
+            color: white;
+            padding: 24px 60px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 22px;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.5);
+            margin: 32px 0;
+        }
+
+        .cta-mega:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 107, 53, 0.7);
+        }
+
+        .guarantees {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 32px;
+        }
+
+        .guarantee-item {
+            color: rgba(255,255,255,0.85);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .guarantee-item::before {
+            content: '✓';
+            color: #00D68F;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0D1117;
+            padding: 40px 5%;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .hero-text p {
+                font-size: 18px;
+            }
+
+            .profile-card {
+                transform: none;
+            }
+
+            .about-highlights,
+            .case-results {
+                grid-template-columns: 1fr;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-card {
+                padding: 32px 24px;
+            }
+
+            .case-title {
+                font-size: 24px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .final-cta h2 {
+                font-size: 36px;
+            }
+
+            .guarantees {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        .sticky-mobile-cta {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-mobile-cta {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 16px;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+                z-index: 999;
+            }
+
+            .sticky-mobile-cta .cta-primary {
+                width: 100%;
+                text-align: center;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Washington Martins</div>
+        <a href="#contato" class="header-cta">CONTATO</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">Especialista em Performance</div>
+                <h1>Tráfego Pago & <span class="highlight">Inteligência Artificial</span></h1>
+                <p>Com 1+ ano de experiência em agências, ajudo PMEs a aumentar ROI sem aumentar custos usando dados e IA.</p>
+                <a href="#contato" class="cta-primary">AGENDAR CONVERSA</a>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <img src="https://i.postimg.cc/PfdKWW0B/image.png" alt="Washington Martins" class="profile-photo">
+                    <div class="profile-name">Washington Martins</div>
+                    <div class="profile-role">Especialista em Tráfego Pago & IA</div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">1+</div>
+                            <div class="stat-label">Ano em Agências</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Redução Tempo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <div class="section-header">
+                <span class="section-label">Quem Sou Eu</span>
+                <h2>Performance Mensurável com IA</h2>
+            </div>
+            
+            <p class="about-text">
+                Sou <strong>Washington Martins</strong>, especialista em tráfego pago com foco em performance mensurável. Trabalho em agência há 1 ano, lidando com campanhas que geram resultados reais.
+            </p>
+            
+            <p class="about-text">
+                <strong>Meu diferencial:</strong> Integro Inteligência Artificial para automação inteligente, utilizando prompts avançados para otimizar anúncios no Google e Facebook. Isso permite que meus clientes economizem tempo, reduzam custos e multipliquem resultados.
+            </p>
+
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">📊</div>
+                    <div class="highlight-title">Setup de Campanhas</div>
+                    <div class="highlight-value">R$ 1.000</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🤖</div>
+                    <div class="highlight-title">Consultoria IA</div>
+                    <div class="highlight-value">R$ 500 - R$ 1.000</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🚀</div>
+                    <div class="highlight-title">Automação Completa</div>
+                    <div class="highlight-value">Sob consulta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <div class="cases-container">
+            <div class="section-header">
+                <span class="section-label">Casos de Sucesso</span>
+                <h2>Resultados Reais com IA</h2>
+            </div>
+
+            <!-- Case 1: Meta Ads -->
+            <div class="case-card">
+                <span class="case-badge">META ADS + IA</span>
+                <h2 class="case-title">Automação de Criatividade no Meta Ads</h2>
+                <p class="case-subtitle">"Como IA Reduziu 80% do Tempo de Criação de Anúncios e Aumentou Engajamento em 45%"</p>
+
+                <div class="case-section">
+                    <h3>O Desafio</h3>
+                    <p>Um e-commerce de moda fitness gastava 15-20 horas por semana criando roteiros e storyboards para anúncios no Meta. O processo era lento, repetitivo e dependia da criatividade de uma única pessoa.</p>
+                </div>
+
+                <div class="case-section">
+                    <h3>A Solução</h3>
+                    <p>Implementei um sistema de IA que analisa anúncios vencedores do nicho e gera roteiros otimizados baseados em padrões comprovados.</p>
+                </div>
+
+                <div class="case-section">
+                    <h3>O Mecanismo</h3>
+                    <ul>
+                        <li><strong>Análise de Dados:</strong> IA escaneia 100+ anúncios de sucesso no nicho fitness</li>
+                        <li><strong>Geração de Roteiros:</strong> Cria scripts com estrutura comprovada (problema → agitação → solução → CTA)</li>
+                        <li><strong>Otimização Contínua:</strong> Aprende com performance dos anúncios para refinar futuras criações</li>
+                    </ul>
+                </div>
+
+                <div class="case-results">
+                    <div class="result-item">
+                        <div class="result-icon">⏱️</div>
+                        <div class="result-value">80%</div>
+                        <div class="result-label">Redução de Tempo<br>(20h → 4h)</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">📈</div>
+                        <div class="result-value">+45%</div>
+                        <div class="result-label">Aumento em<br>Engajamento</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">🎯</div>
+                        <div class="result-value">-32%</div>
+                        <div class="result-label">Redução de<br>Custo por View</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">💰</div>
+                        <div class="result-value">R$ 2.4K</div>
+                        <div class="result-label">Economia<br>Mensal</div>
+                    </div>
+                </div>
+
+                <div class="case-quote">
+                    "Antes perdíamos dias criando. Agora temos anúncios otimizados em horas, com performance superior"
+                </div>
+            </div>
+
+            <!-- Case 2: Google Ads -->
+            <div class="case-card">
+                <span class="case-badge">GOOGLE ADS + IA</span>
+                <h2 class="case-title">Planejamento Inteligente no Google Ads</h2>
+                <p class="case-subtitle">"IA Transforma 8 Horas de Planejamento em 45 Minutos - E Aumenta CTR em 67%"</p>
+
+                <div class="case-section">
+                    <h3>O Desafio</h3>
+                    <p>Uma agência de marketing digital gastava 1 dia inteiro por cliente planejando campanhas no Google Ads - desde pesquisa de palavras-chave até criação de copy para anúncios.</p>
+                </div>
+
+                <div class="case-section">
+                    <h3>A Solução</h3>
+                    <p>Desenvolvi prompts especializados que automatizam 90% do processo de planejamento, liberando tempo para estratégia avançada.</p>
+                </div>
+
+                <div class="case-section">
+                    <h3>O Mecanismo</h3>
+                    <ul>
+                        <li><strong>Pesquisa Automatizada:</strong> IA analisa concorrência e sugere palavras-chave com alto potencial</li>
+                        <li><strong>Copy Otimizada:</strong> Gera títulos e descrições baseados em princípios de copywriting comprovados</li>
+                        <li><strong>Estrutura Inteligente:</strong> Cria sitelinks e extensões que aumentam CTR</li>
+                        <li><strong>Validação Contínua:</strong> Testa variações e aprende com performance</li>
+                    </ul>
+                </div>
+
+                <div class="case-results">
+                    <div class="result-item">
+                        <div class="result-icon">⏱️</div>
+                        <div class="result-value">90%</div>
+                        <div class="result-label">Redução de Tempo<br>(8h → 45min)</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">📊</div>
+                        <div class="result-value">+67%</div>
+                        <div class="result-label">Aumento de<br>CTR</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">🔍</div>
+                        <div class="result-value">3x</div>
+                        <div class="result-label">Cobertura de<br>Palavras-chave</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-icon">🎯</div>
+                        <div class="result-value">+28%</div>
+                        <div class="result-label">Conversão por<br>Campanha</div>
+                    </div>
+                </div>
+
+                <div class="case-quote">
+                    "A IA não substitui o estrategista - ela libera o estrategista para fazer o que realmente importa"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contato">
+        <div class="cta-content">
+            <div class="urgency-badge">VAGAS LIMITADAS ESTA SEMANA</div>
+            <h2>Pronto para Transformar Seu Tráfego em Vendas Reais?</h2>
+
+            <div class="cta-options">
+                <p class="option-title">Você tem 2 opções:</p>
+                
+                <div class="options-grid">
+                    <div class="option-card">
+                        <div class="option-number">1.</div>
+                        <h3>Continuar Como Está</h3>
+                        <p>Gastando com anúncios que não convertem, dependendo de sorte e indicações</p>
+                    </div>
+
+                    <div class="option-card">
+                        <div class="option-number">2.</div>
+                        <h3>Agendar um Audit Grátis</h3>
+                        <p>30 minutos onde vou analisar suas campanhas atuais e mostrar exatamente como você pode:</p>
+                        <ul>
+                            <li>Reduzir custos desnecessários</li>
+                            <li>Aumentar vendas com IA</li>
+                            <li>Automatizar processos manuais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-offer">
+                <h3>🎁 Oferta Especial para Primeiros Clientes</h3>
+                <p><span class="price-strike">Valor normal: R$ 2.500</span></p>
+                <p style="font-size: 32px; font-weight: 800; margin-top: 8px;">Setup Inicial + 30 Dias de Otimização<br>por apenas R$ 1.500</p>
+            </div>
+
+            <a href="https://wa.me/5531999999999?text=Olá,%20quero%20agendar%20meu%20Audit%20Grátis" class="cta-mega">AGENDAR AUDIT GRÁTIS - 15 MINUTOS</a>
+
+            <div class="guarantees">
+                <div class="guarantee-item">Sem compromisso</div>
+                <div class="guarantee-item">Análise personalizada</div>
+                <div class="guarantee-item">Resposta em 24h</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Washington Martins - Especialista em Tráfego Pago & Inteligência Artificial</p>
+        <p style="margin-top: 12px; font-size: 14px;">📧 contato@washingtonmartins.com | 📱 WhatsApp</p>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta">
+        <a href="https://wa.me/5531999999999?text=Olá,%20quero%20agendar%20meu%20Audit%20Grátis" class="cta-primary">AGENDAR AUDIT GRÁTIS</a>
+    </div>
+</body>
+</html>
+
